@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>404</title>
+    <script type="text/javascript">
+        var imgArray= new Array();
+        imgArray[0]=" https://kurailuna.github.io/guruguru/Juju.png ";  //사진
+        imgArray[1]="https://kurailuna.github.io/LaTale/iris.png"; //사진
+        imgArray[2]="https://kurailuna.github.io/guruguru/Kukuri.png";    //사진
+
+        
+        function showImage()
+        {
+            var imgNum=Math.round(Math.random()*2);
+            var objImg=document.getElementById("introImg");
+            objImg.src=imgArray[imgNum];
+        }
+    </script>
+</head>
+<body onload="showImage()">
+    <img id="introImg" border="0"><br>
+    Sorry this page does not exist =(
+</body>
+</html>
