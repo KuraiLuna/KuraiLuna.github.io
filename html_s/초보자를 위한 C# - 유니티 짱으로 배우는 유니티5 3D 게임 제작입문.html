@@ -1,0 +1,861 @@
+<p>[##_Image|kage@bakMN0/btr8IJqjccq/ov7DN8GfMUPxAJCQtckIS0/img.png|CDM|1.3|{"originWidth":600,"originHeight":338,"style":"alignCenter","filename":"초보자를-위한-C#---유니티-짱으로-배우는-유니티5-3D-게임-제작입문.png"}_##]</p>
+<h2 data-ke-size="size26">1.형</h2>
+<p data-ke-size="size16">행은 변수를 어떻게 처리할지 결정하는 역할을 한다.</p>
+<pre id="code_1680881856064" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int = 1 ; // int 변수 x에 값 1을 대입한다
+char c = c; // char형 변수 c에 값 C를 대입한다
+// char n = 1 // char형 변수 n에 값 1을 대입하면 컴파일 오류가 발생한다</code></pre>
+<p data-ke-size="size16">형은 숫자와 문자뿐만 아니라 true/false 같은 bool형을 포함하여 여러가지 종류가 있다.</p>
+<p data-ke-size="size16">또한, 숫자형에도 여러가지 종류가 있다.</p>
+<pre id="code_1680881974661" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>bool x = true;
+byte b = 255;
+int i = 1;
+float f = 1.0f;
+double d = 1.0;</code></pre>
+<p>[##_Image|kage@n7PJd/btr8NcqGHrY/835I7Su7qKGKwsggAph3W0/img.jpg|CDM|1.3|{"originWidth":1793,"originHeight":1377,"style":"alignCenter","filename":"20230406_212821.jpg"}_##][##_Image|kage@Vqo8F/btr8J0yhiiv/Vq2eto9kze5FJ6jlWln5lk/img.jpg|CDM|1.3|{"originWidth":3344,"originHeight":796,"style":"alignCenter","filename":"20230406_213330.jpg"}_##]</p>
+<h2 data-ke-size="size26">2.행 추론</h2>
+<p data-ke-size="size16">형 추론이란 형을 선언하지 않아도 컴파일러가 값을 추론하여</p>
+<p data-ke-size="size16">자동으로 형을 할당하는 기능, 형 추론은 메서드 안에서만 가능하다.</p>
+<pre id="code_1680882102436" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int a1 = 1; // int형 변수 a1
+var a2 = 1; // int형 변수 a2</code></pre>
+<p data-ke-size="size16">var를 사용할 때 초깃값을 대입하지 않으면 컴파일 오류가 발생한다.</p>
+<pre id="code_1680882125044" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// var b; //var는 초깃값을 넣지 않으면 컴파일 시 오류가 발생한다</code></pre>
+<p data-ke-size="size16">var를 사용하면 형 추론으로 어떤 형이든 적용시켜주므로</p>
+<p data-ke-size="size16">아무리 형 이름이 길어도 항상 세 문자로 표편할 수 있다.</p>
+<p data-ke-size="size16">메서드 안에서 모든 형을 세 문자로 표현할 수 있어 코드 가독성이 높아진다</p>
+<pre id="code_1680882157627" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// 좌변이 모두 세 문자로 표현되므로 소스가 깔금하다
+var a = 1;
+var s = "aaa";
+var dic = new Dictionary&lt;string, string&gt;();</code></pre>
+<p data-ke-size="size16">Object형처럼 어떤 형으로도 대체할 수 없는 형도 있긴 하지만,</p>
+<p data-ke-size="size16">초깃값을 할당하지 않으면 사용 할 수 없는 형 추론과는 다른 얘기다.</p>
+<p data-ke-size="size16">값을 판별해서 형을 할당하려면 형 추론을 사용해야 한다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26">3.연산자</h2>
+<p data-ke-size="size16">연산자란 덧셈(+)이나 뺄셈(-)과 같은 연산을 하는 기호이다.</p>
+<p data-ke-size="size16">연산의 대상이 되는 것을 오퍼랜드라고 한다.</p>
+<p data-ke-size="size16">오퍼랜드와 연산자로 구성된 것을 식이라고 부른다.</p>
+<p data-ke-size="size16">연산자는 계산의 목적 외에도 다양한 종류가 있다.</p>
+<p>[##_Image|kage@cU3N3q/btr8Lg8qJrj/fN8rIcgYy8EKkpidAC30I0/img.jpg|CDM|1.3|{"originWidth":1675,"originHeight":813,"style":"alignCenter","filename":"20230406_215747.jpg"}_##]</p>
+<p data-ke-size="size16">연산자는 왼쪽에서 오른족의 순서로 처리된다(단, 대입은 오른쪽에서 왼쪽).</p>
+<p data-ke-size="size16">그러나 우선순위가 높은 연산자가 있느면 먼저 처리한다. 곱셈(*)이 덧셈(+)보다</p>
+<p data-ke-size="size16">우선순위가 높으므로 1 + 2 * 3 식은 처음에 *이 계산된 다음 +가 계산된다.</p>
+<pre id="code_1680882258956" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// 연산자의 우선순위 순서대로 계산된다
+var x = 1 + 2 * 3;
+var x = 1 + 6;
+var x = 9;</code></pre>
+<p data-ke-size="size16">(1 + 2) * 3과 같이 괄호가 있느면 괄호를 먼저 계산한다.</p>
+<pre id="code_1680882282428" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// 괄호가 있으면 그 부분이 먼저 계산된다.
+var x = (1 + 2) * 3;
+var x = 3 * 3;
+var x = 9;</code></pre>
+<p>[##_Image|kage@w57CK/btr8J39Fbfn/CwOClozYHKmLD9k4xFVM5k/img.jpg|CDM|1.3|{"originWidth":2604,"originHeight":1816,"style":"alignCenter","filename":"20230406_221608.jpg"}_##]</p>
+<table style="border-collapse: collapse; width: 100%; height: 377px;" border="1" data-ke-align="alignLeft" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 11.6279%; text-align: center; height: 20px;">연산자</td>
+<td style="width: 9.30231%; text-align: center; height: 20px;">식</td>
+<td style="width: 45.4651%; text-align: center; height: 20px;">용도</td>
+<td style="width: 33.6047%; text-align: center; height: 20px;">구분</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">%</td>
+<td style="width: 9.30231%; text-align: left; height: 17px;">&nbsp;x % y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;나머지</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">+</td>
+<td style="width: 9.30231%; height: 17px;">x + y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;덧셈</td>
+<td style="width: 33.6047%; height: 17px;">기법</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">-</td>
+<td style="width: 9.30231%; height: 17px;">x - y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;뺄셈</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&lt;&lt;</td>
+<td style="width: 9.30231%; height: 17px;">x &lt;&lt; y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;비트를 왼쪽으로 시프트</td>
+<td style="width: 33.6047%; height: 17px;">시프트</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&gt;&gt;</td>
+<td style="width: 9.30231%; height: 17px;">x &gt;&gt; y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;비트를 오른쪽으로 시프트</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&lt;</td>
+<td style="width: 9.30231%; height: 17px;">x &lt; y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x가 y보다 작으면 true</td>
+<td style="width: 33.6047%; height: 17px;">관계</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&gt;</td>
+<td style="width: 9.30231%; height: 17px;">x &gt; y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x가 y보다 크면 true</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&lt;=</td>
+<td style="width: 9.30231%; height: 17px;">x &lt;= y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x가 y보다 작거나 같으면 true</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&gt;=</td>
+<td style="width: 9.30231%; height: 17px;">x &gt;= y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x가 y보다 크거나 같으면 true</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">==</td>
+<td style="width: 9.30231%; height: 17px;">x == y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x와 y가 같으면 true</td>
+<td style="width: 33.6047%; height: 17px;">비교</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">!=</td>
+<td style="width: 9.30231%; height: 17px;">x != y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x와 y가 다르면 true</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&amp;</td>
+<td style="width: 9.30231%; height: 17px;">x &amp; y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x와 y의 각 비트가 1이면 1(예:10 &amp; 11 = 10)</td>
+<td style="width: 33.6047%; height: 17px;">논리 AND</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">^</td>
+<td style="width: 9.30231%; height: 17px;">x ^ y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x와 y의 각 비트가 다르면(예:10 ^ 11 =01)</td>
+<td style="width: 33.6047%; height: 17px;">논리 XOR</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">|</td>
+<td style="width: 9.30231%; height: 17px;">x | y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x와 y의 각 비트가 1이면(예:10 | 11 = 11)</td>
+<td style="width: 33.6047%; height: 17px;">논리 OR</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">&amp;&amp;</td>
+<td style="width: 9.30231%; height: 17px;">x &amp;&amp; y&nbsp;</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;&amp;와 같다. 그러나x 가 false면 y는 평가되지 않는다</td>
+<td style="width: 33.6047%; height: 17px;">조건 AND</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">||</td>
+<td style="width: 9.30231%; height: 17px;">x || y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;|와 같다. 그러나 x가 true면 y는 평가되지 않는다.</td>
+<td style="width: 33.6047%; height: 17px;">조건 OR</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">??</td>
+<td style="width: 9.30231%; height: 17px;">x ?? y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x가 null이면 y,x가 false이면 x</td>
+<td style="width: 33.6047%; height: 17px;">null 합계</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">?:</td>
+<td style="width: 9.30231%; height: 17px;">x ?y:z</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x가 true이면y,x가 false이면 z</td>
+<td style="width: 33.6047%; height: 17px;">조건</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">=</td>
+<td style="width: 9.30231%; height: 17px;">x = y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;대입하고 1 증가, 대입하고 1감소</td>
+<td style="width: 33.6047%; height: 17px;">대입</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">+=</td>
+<td style="width: 9.30231%; height: 17px;">x+= y</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;x = x + y와 같다(-=,/=,%=,&amp;=,|=,^=도 모든같인 방식)</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 11.6279%; text-align: center; height: 17px;">=&gt;</td>
+<td style="width: 9.30231%; height: 17px;">()=&gt;{}</td>
+<td style="width: 45.4651%; height: 17px; text-align: left;">&nbsp;람다 식</td>
+<td style="width: 33.6047%; height: 17px;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p data-ke-size="size16">※비트란 2진수에서 숫자 한 자리를 말함</p>
+<h1>4.문</h1>
+<p data-ke-size="size16">문(Statement)이란 프로그램 작성하는 처리의 한 단위다.</p>
+<p data-ke-size="size16">식만으로는 프로그램을 작성할 수 없고 반드시 문 형태로 작성해야 한다.</p>
+<p data-ke-size="size16">문이라 부를 수 있는 것에는 두 가지가 있다. 그중 하나로 ;(세미클론)</p>
+<p data-ke-size="size16">으로 끝나는 코드 한 행을 문이라 한다.</p>
+<pre id="code_1680882924924" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int a; // 선언문
+a = 1; // 식으로 된 문(a = 1은 대입식)</code></pre>
+<p data-ke-size="size16">문에 해당하는 다른 한가지는 {}(중괄호)로 묶은 려러 행의 코드다.</p>
+<p data-ke-size="size16">중괄호로 묶인 부분을 블록이라고 부른다.</p>
+<p data-ke-size="size16">변수는 블록 안에 유효하고 변수의 이러한 유효 범위를 스코프라고 한다.</p>
+<pre id="code_1680882946236" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int a = 0;
+if(a == 1) // 선택문(a == 1은 비교식)
+{
+  int b;
+  b = 2; // 식으로 된 문(b = 2는 대입식)
+}
+// b = 3; // x: 스코프 밖에서 접근하려고 하면 컴파일 오류가 발생한다.</code></pre>
+<p data-ke-size="size16">문에는 선택문, 반복문과 같은 다야한 종류가 있으면 각각에 관련된 키워드가 있다.</p>
+<p>[##_Image|kage@bxGmmM/btr8J0dV8Zc/ZuoyZ2NwEjfEO6uXxQp4Q0/img.jpg|CDM|1.3|{"originWidth":1708,"originHeight":2188,"style":"alignCenter","filename":"20230406_230731.jpg"}_##]</p>
+<h1>5.메서드</h1>
+<p data-ke-size="size16">메서드란 프로그램 안에서 이루어지는 처리에 별도의 이름을 붙이고 다른 위치에서</p>
+<p data-ke-size="size16">호출되도록 만든 것이다. 메서드에는 인수와 반환값을 지정할 수 있다.</p>
+<p data-ke-size="size16">인수는 몇 개라도 넘겨줄 수 있으며 반환값은 return과 함께 쓴 값으로 이 값이 반환된다.</p>
+<pre id="code_1680882982980" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>void Walk() {}             // 인수 없음, 반환값 없음
+int Stop(int x) {return x} // 인수 한 개, 반환값 있음
+void Run(int x, int y);    // 인수 두 개, 반환값 없음</code></pre>
+<p data-ke-size="size16">메서드를 호출하려면 파라미터의 개수에 맞춰 인수를 정의해야한다.</p>
+<p data-ke-size="size16">반환값을 있을 떄는 반환값의 현에 맞춰 값을 대입한다.</p>
+<pre id="code_1680883000915" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Walk();            // 인수 없음, 반환값 없음
+var y = Stop(1);   // 인수 한 개, 반환값 있음
+Run(10, 20);       // 인수 한 개, 반환값 없음</code></pre>
+<h1>6. 배열</h1>
+<p data-ke-size="size16">배열이란 형이 같은 변수 여러 개를 한꺼번에 처리하기 위한 것이다.</p>
+<p data-ke-size="size16">반복 처리와 함께 사용하면 같은 처리를 여러 번 작성할 필요가 없어져</p>
+<p data-ke-size="size16">프로그램을 수정하기도 쉽다.</p>
+<p data-ke-size="size16">작성 방법은 아래 코드와 같이 new라고 쓴 다음에 형과 같이를 지정하여</p>
+<p data-ke-size="size16">실체를 만들어준다.</p>
+<pre id="code_1680883017507" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var faces = new string[3]; // string을 세 개 넣을 수 있는 배열 faces</code></pre>
+<p data-ke-size="size16">배열에 값을 넣을 때는 변수 이름에 인덱스를 붙여서 한 개씩 처리한다.</p>
+<p data-ke-size="size16">인덱스는 첨자라고도 부르며 1이 아니라 0부터 시작한다는 것에 주의하자.</p>
+<pre id="code_1680883030804" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>faces[0] = "anngry";
+faces[1] = "conf";
+faces[2] = "smile";</code></pre>
+<p data-ke-size="size16">정의할 때 값을 넣는 방법도 있다. 아래코드에 적힌 두 가지 방법은 같은 내용이다.</p>
+<pre id="code_1680883045723" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>string[] faces = {"angry", "sap", "smile"};
+var faces = new[] {"angry", "sap", "smile"};</code></pre>
+<p data-ke-size="size16">그리고 2차원 배열, 3차원 배열이나 배열의 배열을 만들 수도 있다.</p>
+<p data-ke-size="size16">다치원 배열은 행렬을 다룰 때 편리하지만, 각 요소를 파악하기 어렵다는 단점이</p>
+<p data-ke-size="size16">있으므로 주의해서 사용해야한다.</p>
+<pre id="code_1680883060204" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>string[,] faces2;
+string[,,] faces3;
+string[][] faces4;</code></pre>
+<h1>7. 예외 처리</h1>
+<p data-ke-size="size16">예외 처리란 프로그램에서 예측하지 못한 상황에 대처하는 것을 말한다.</p>
+<p data-ke-size="size16">예를 들어 파일 접속 프로그램을 만들어서 실행했는데 어떠한 이유로 파일이</p>
+<p data-ke-size="size16">존재하지 않는다면 예외가 발생한다. 작성법은 아래 코드와 같이 try-catch</p>
+<p data-ke-size="size16">라고 쓰면 된다.</p>
+<pre id="code_1680883080995" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>try{ // 예외가 발생할 수 있는 부분을 try 블록으로 감싼다.
+     // 아래 행에서 파일에 접근하지 못하면 예외가 발생한다.
+     var test = File.ReadAllTest(@"C:\log.txt");
+}catch(IOException e){ // 발생한 예외를 잡아서 catch 블록에서 처리한다.
+ Debug.Log("파일에 접근할 수 없습니다.");
+
+}</code></pre>
+<p data-ke-size="size16">또한, finally 블록도 있다.finally는 어떤 상황에서도 반드시 호출되므로</p>
+<p data-ke-size="size16">리소스 해제와 같이 반드시 처리해야 하는 부분에 사용한다. try-catch-finally</p>
+<p data-ke-size="size16">혹은 try-finally라고 쓴다.</p>
+<pre id="code_1680883096139" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>WWW www =null;
+try {
+    www = new WWW("https://www.yahoo.co.jp/");
+}finally{ // 예외 발생 여부와 상관없이 finally 블록은 항상 실행된다.
+  if (www != null) {
+      www.Dispose();
+  }
+}</code></pre>
+<p data-ke-size="size16">만약 리소스를 해제 하는데 Dispose를 사용한다면 try-finally보다</p>
+<p data-ke-size="size16">편리한 작성법이 있다. 바로using 문이다. using 문의 작성법은 아래</p>
+<p data-ke-size="size16">코드와 같다, 앞서 코드에서 했던 처리과 같다.</p>
+<pre id="code_1680883114067" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>using (WWW www= new WWW("https://www.yahoo.co.jp/"))
+{
+
+}</code></pre>
+<h2 data-ke-size="size26">8. 정리</h2>
+<p>[##_Image|kage@bdzEkS/btr8Jo7ee6g/CE9iTIl1vQHCrU0MhyudjK/img.jpg|CDM|1.3|{"originWidth":1794,"originHeight":1939,"style":"alignCenter","filename":"20230407_001718.jpg"}_##][##_Image|kage@b6Brcg/btr8Mpw3xsc/TfHiyVswEgE9o30Wbxbbu1/img.jpg|CDM|1.3|{"originWidth":1781,"originHeight":2122,"style":"alignCenter","filename":"20230407_002050.jpg"}_##]</p>
+<hr contenteditable="false" data-ke-type="horizontalRule" data-ke-style="style7" />
+<h1>9. 클래스 기초</h1>
+<p data-ke-size="size16">클래스의 기초내용</p>
+<h2 data-ke-size="size26">9.1 클래스</h2>
+<p data-ke-size="size16">클래스나 구조체 안에는 다양한 형과 메서드가 있으며 자신이 선언한 이름을</p>
+<p data-ke-size="size16">사용하여 이들을 다룰 수 있다.</p>
+<pre id="code_1680883285821" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>class Person
+{
+ public string name; // 멤버 변수
+ public int age;     // 멤버 변수
+
+}</code></pre>
+<p data-ke-size="size16">자신이 직접 만든 클래스는 아래 코드 처럼 사용할 수 있으며 이때 new로 생성한</p>
+<p data-ke-size="size16">클래스의 실체를 인스턴스라고 한다. 멤버 변수는 인스턴스에 점(.)을 붙여서 사용한다.</p>
+<pre id="code_1680883306851" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Person p = new Person(); //Person 클래스에 포함된 p 인스턴스 생성
+p.name = "UnityChan";    //변수에 값을 대입하려면 인스턴스에 점으 붙이고 변수를 쓴다
+p.age = 17;</code></pre>
+<p data-ke-size="size16">클래스 안에서는 인스터스를 생략해도 멤버 변수를 사용할 수있지만,</p>
+<p data-ke-size="size16">인스턴스를 명시적으로 쓰고 싶은 때는 아래 코드와 같이 this를 사용한다.</p>
+<pre id="code_1680883320092" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>class Person
+{
+  //this를 붙이지 않아도 된다.
+  //단, 다른 클래스에 같은 이름의 변수가 있으면 this를 붙여야 한다.
+public void SetName(String name) { this.name = name;}
+
+}</code></pre>
+<h2 data-ke-size="size26">9.2 멤버</h2>
+<p data-ke-size="size16">클래스에는 다양한 기능의 멤버가 있다.</p>
+<p data-ke-size="size16">각 멤버에 관한 설명는 아래 표에 정리해두었다.</p>
+<table style="border-collapse: collapse; width: 99.6514%; height: 220px;" border="1" data-ke-align="alignLeft" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; text-align: center; height: 20px;"><span data-token-index="0">멤버</span></td>
+<td style="width: 57.7518%; text-align: center; height: 20px;"><span data-token-index="0">설명</span></td>
+<td style="width: 32.4109%; text-align: center; height: 20px;"><span data-token-index="0">작성법</span></td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">&nbsp;생성자</td>
+<td style="width: 57.7518%; height: 20px;">클래스를 초기화 할 때 실행된다.</td>
+<td style="width: 32.4109%; height: 20px;">Test(){&middot;&middot;&middot;}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">소멸자</td>
+<td style="width: 57.7518%; height: 20px;">클래스를 해제할 때 실행된다.</td>
+<td style="width: 32.4109%; height: 20px;">~Test(){&middot;&middot;&middot;}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">상수</td>
+<td style="width: 57.7518%; height: 20px;">말 그대로 상수</td>
+<td style="width: 32.4109%; height: 20px;">const string Fix=&rdquo;Fix&rdquo;;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">필드</td>
+<td style="width: 57.7518%; height: 20px;">말 그대로 필드</td>
+<td style="width: 32.4109%; height: 20px;">int field;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">메서드</td>
+<td style="width: 57.7518%; height: 20px;">말 그대로 메서드</td>
+<td style="width: 32.4109%; height: 20px;">void Method(){&middot;&middot;&middot;}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">프로퍼티</td>
+<td style="width: 57.7518%; height: 20px;">클래스 밖에서는 변수처럼, 클래스 안에서는 메서드처럼 사용할 수 있다.</td>
+<td style="width: 32.4109%; height: 20px;">int Property{get;set;}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">이벤트</td>
+<td style="width: 57.7518%; height: 20px;">프로퍼티처럼 사용할 수 있는 메서드</td>
+<td style="width: 32.4109%; height: 20px;">event EventHandler Event;</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">인덱서</td>
+<td style="width: 57.7518%; height: 20px;">프로퍼티처럼 사용할 수 있는 배열</td>
+<td style="width: 32.4109%; height: 20px;">int this(int i){&middot;&middot;&middot;}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">연산자</td>
+<td style="width: 57.7518%; height: 20px;">오버로드된 연산자</td>
+<td style="width: 32.4109%; height: 20px;">static Test operator+(Test x, Test y) {&middot;&middot;&middot;}</td>
+</tr>
+<tr style="height: 20px;">
+<td style="width: 9.49621%; height: 20px;">중첩된 형</td>
+<td style="width: 57.7518%; height: 20px;">클래스 내에 선언된 클래스 등</td>
+<td style="width: 32.4109%; height: 20px;">static Test operator+(Test x, Test y) {&middot;&middot;&middot;}</td>
+</tr>
+</tbody>
+</table>
+<h2 data-ke-size="size26">9.3 접근 제한자</h2>
+<p data-ke-size="size16">접근 제한자란 멤버 변수에 접근 방법을 제어하기 위한 것이다.</p>
+<p data-ke-size="size16">자세한 내용은 표 2를 참고, 클래스 내부에서만 접근할 수 있는</p>
+<p data-ke-size="size16">private필드와 클래스 외부에서 접근할 수 있는 public메서드</p>
+<p data-ke-size="size16">를 준비한다. 이렇게 하는 것은 접근 제한자를 사용하는 방법 중 한 가지</p>
+<pre id="code_1680883657731" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>class Person
+{
+  // Private로 지정된 name 필드는 이 클래스 안에서만 수정 가능하다.
+  private string name;
+  // pubilc으로 지정된 Set 메서드는 이 클래스 밖에서도 접근할 수 있다.
+  public void SetName(string name) { this.name = name; }
+  // public으로 지정된 Get 메서드는 이 클래스 밖에서도 접근 할 수 있다.
+  public string GetName() { return; }
+
+}</code></pre>
+<table style="border-collapse: collapse; width: 100%;" border="1" data-ke-align="alignLeft" data-ke-style="style13">
+<tbody>
+<tr>
+<td style="width: 20.3488%; text-align: center;"><span data-token-index="0">접근 제한자</span></td>
+<td style="width: 79.6512%; text-align: center;"><span data-token-index="0">설명</span></td>
+</tr>
+<tr>
+<td style="width: 20.3488%;"><span style="background-color: #000000; color: #eb5757;" data-token-index="0">&nbsp;public</span></td>
+<td style="width: 79.6512%;">자유롭게 접근할 수 있다.</td>
+</tr>
+<tr>
+<td style="width: 20.3488%;"><span style="background-color: #000000; color: #eb5757;" data-token-index="0">&nbsp;protected</span></td>
+<td style="width: 79.6512%;">해당 클래스와 그 클래스를 상속한 클래스에서만 접근 할 수 있다.</td>
+</tr>
+<tr>
+<td style="width: 20.3488%;"><span style="background-color: #000000; color: #eb5757;" data-token-index="0">&nbsp;internal</span></td>
+<td style="width: 79.6512%;">해당 어셈블리어에서만 접근할 수 있다.</td>
+</tr>
+<tr>
+<td style="width: 20.3488%;"><span style="background-color: #000000; color: #eb5757;" data-token-index="0">&nbsp;protected internal</span></td>
+<td style="width: 79.6512%;">해당 어셈블리나 그 클래스를 상속한 클래스에서만 접근할 수 있다.</td>
+</tr>
+<tr>
+<td style="width: 20.3488%;"><span style="background-color: #000000; color: #eb5757;" data-token-index="0">&nbsp;internal protected</span></td>
+<td style="width: 79.6512%;">해당 어셈블리나 그 클래스를 상속한 크래스에서만 접근할 수 있다.<br /><span style="background-color: #000000; color: #eb5757;" data-token-index="1">internal protected</span>를 사용해도 된다</td>
+</tr>
+<tr>
+<td style="width: 20.3488%;"><span style="background-color: #000000; color: #eb5757;" data-token-index="0">&nbsp;private</span></td>
+<td style="width: 79.6512%;">해당 클래스 내부에서만 접근할 수 있다,</td>
+</tr>
+</tbody>
+</table>
+<pre id="code_1680883819322" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// 접근 제한자는 클래스 내부에서만 접근할 수 있다.
+public class Test
+{
+  // 접근 제한자는 어떤 멤버 이름 앞에도 붙일 수 있다.
+  public Test() { }
+  public const string Fix = "fix";
+  public int fieId;
+  protected void Method() { }
+  public int Property { get; set; }
+  public event EventHandIer Event;
+  public int this[int i] { &middot;&middot;&middot; }
+  internal static static Test operator +(Test x, Test y) { &middot;&middot;&middot; }
+  protected internal class Test2 { }
+}​</code></pre>
+<h2 data-ke-size="size26">9.4 프로퍼티와 인덱서</h2>
+<p data-ke-size="size16">프로피터란 클래스 밖에서는 변수로,클래스 안에서는 메서드처럼 취급되는 것을 뜻한다.</p>
+<p data-ke-size="size16">앞서 접근 제한자 부분에서 살펴본 캡슐화르 기억하는가? 캡슐화는 유용하지만.</p>
+<p data-ke-size="size16">필드 하나에 메서드 두개가 필요하다. 아래코드와 같이 작성하면 캡슐화를 사용한 코드와 의미가 같다.</p>
+<pre id="code_1680883835339" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>private string name;
+public string Name
+{
+  get { return this.name; }
+  set { this.name = value; }
+}</code></pre>
+<p data-ke-size="size16">만약 get과 set 둘 다 아무 처리도 하지 않는다면 더 간단하게 작성할 수 있다.</p>
+<p data-ke-size="size16">아래 코드는 위 코드과 의미가 같다. 이 기능을 자동 프로퍼터라 한다.</p>
+<pre id="code_1680883852187" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public string Name { get; set; }</code></pre>
+<p data-ke-size="size16">또한, 프로퍼터의 get이나 set에도 접근 제한자를 붙일 수 있다.</p>
+<p data-ke-size="size16">예를 들어 외부에서 읽을 수는 있지만, 수정은 할 수 없는 프로퍼티를 만들 수 있다.</p>
+<pre id="code_1680883871187" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public string Name { get; private set; }</code></pre>
+<p data-ke-size="size16">그리고 인덱서를 사용하면 배열로 프로퍼티와 같은 효과를 낼 수 있다.</p>
+<p data-ke-size="size16">프로퍼티 이름 대신 this[]를 사용하는 점과 첨자를 사용한다는 점 말고는</p>
+<p data-ke-size="size16">프로퍼티와 다르지 않다.</p>
+<pre id="code_1680883886874" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>private int[] x;
+public int this[int I]
+{
+  get { return x[i]; }
+  set { x[i] = value; }
+}</code></pre>
+<p data-ke-size="size16">유니티에서 개발할 때 주의할 사항이 있다. 프로퍼티는 public으로 지정되어도</p>
+<p data-ke-size="size16">Inspector에서는 사용할 수 없다는 것이다. Inspector에서 값을 변경하려면</p>
+<p data-ke-size="size16">아래코드와 같이 작성해야 한다.</p>
+<pre id="code_1680883902875" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>[SerializedField]
+private string name;
+public string Name
+{
+  get { return this.name; }
+  set { this.name = value; }
+}</code></pre>
+<p>[##_Image|kage@cqSL8x/btr8LgAzfT1/cUdzps09FOH5gfK6W9bO9K/img.jpg|CDM|1.3|{"originWidth":1532,"originHeight":1388,"style":"alignCenter","filename":"20230407_035159.jpg"}_##]</p>
+<h2 data-ke-size="size26">9.5 생성자</h2>
+<p data-ke-size="size16">생성자는 초기화를 위한 메서드이며 인스턴스를 생성할 때 반드시 호출된다.</p>
+<p data-ke-size="size16">반환값은 없으며 인수는 어떤 것이라도 가능하다.생성자 사용법은 아래코드와</p>
+<p data-ke-size="size16">같다. 생성자의 이름은 해당 클래스와 같아야 한다.</p>
+<pre id="code_1680883934902" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>class Person
+{
+  public Person(string name) //생성자
+  {
+     this.Name = name;
+  }
+  public string Name { get; set; }
+}</code></pre>
+<p data-ke-size="size16">생성자를 포함한 클래스를 사용할 때 는 아래코드과 같이 호출한다.</p>
+<pre id="code_1680883950820" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Person p = new Person("UnityChan");</code></pre>
+<h2 data-ke-size="size26">9.6 static</h2>
+<p data-ke-size="size16">클래스를 사용하다보면 &lsquo;공용 변수와 메서드가 있었으면 편리할 텐데&middot;&middot;&middot;&rdquo;할 때가</p>
+<p data-ke-size="size16">종종 있다. 이럴때는 static으로 정적 멤버를 만들면 된다.정적 멤버란 인스턴스 없이</p>
+<p data-ke-size="size16">클래스에서 직접 호출할수 있는 멤버 직접 호출할 수 있는 멤버를 의미한다.</p>
+<pre id="code_1680883968642" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public class Person
+{
+  public static int count; // static을 붙여서 선언
+}
+Person.count = 1;          // 클래스 이름을 사용하여 변수에 직접 접근한다.</code></pre>
+<p data-ke-size="size16">정적 멤버중에 static이 없는 멤버를 인스턴스 멤버라고 한다.</p>
+<p data-ke-size="size16">단,정적 멤버는 인스턴스 멤버에 접근할 수 없으므로 주의하자.</p>
+<pre id="code_1680883984522" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public class Person
+{
+  public static Name { get; set; }
+  private static int count;
+  public static void Countup()
+  {
+    count++;                  // 맞음: 정적 메서드는정적 멤버에 접근할 수 있다.
+    // Name = "UnityChan"     // 틀림: 인스턴스 멤버로 접근하면 컴파일 오류가 발생한다.
+  }
+}</code></pre>
+<h2 data-ke-size="size26">9.7 상속</h2>
+<p data-ke-size="size16">상속은 이미 만들어진 클래스의 기능을 바탕으로 새로운 클래스를 만들어서 새 멤버</p>
+<p data-ke-size="size16">를 추가할 수 있는 가능이다.</p>
+<p data-ke-size="size16">여기서 바탕이 되는 클래스를 부모 클래스(기반 클래스),새롭게 만든 클래스를 자식</p>
+<p data-ke-size="size16">클래스(파생 클래스)라고 한다. 자식 클래스를 만들 때,는 클래스 이름 뒤에:클론을</p>
+<p data-ke-size="size16">붙이고 그 뒤에 부모 클래스 이름을 쓴다.</p>
+<pre id="code_1680884001779" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public class Person         // 부모 클래스 Person
+{
+   public string Name {get; set; }
+}
+
+public class Girl : Person  // 자식 클래스 Girl
+{
+  public string Weapon {get; set; } // 자식 클래스에만 멤버도 선언할 수 있다.
+}</code></pre>
+<p data-ke-size="size16">자식 클래스 Girl은 부모 클래스 Person의 기능 중 private로 지정된 것을 제외하고</p>
+<p data-ke-size="size16">모두 사용할수 있다.실제로 자식 클래스에는 없는 멤버인Name에 접근해도 오류가 발생</p>
+<p data-ke-size="size16">하지 않는다.</p>
+<pre id="code_1680884022060" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Girl p = new Girl();
+p.Name = "UnityChan";  // 부모 클래스에서 선언된 Name은 자식 클래스에서
+                       // 다시 선언하지 않아도 그대로 사용할 수 있다.</code></pre>
+<p data-ke-size="size16">또한,자식 클래스의 인스턴스는 부모 클래스의 변수에 할당 할 수 있다.</p>
+<pre id="code_1680884035315" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Person p = new Girl();    //맞음:자식 클래스는 부모 클래스의 것을 가지고 있으므로 성립
+// Girl p = new Person(); //틀림:부모 클래스는 자식 클래스의 것을 가지고 있지 않으므로</code></pre>
+<h2 data-ke-size="size26">9.8 추상과 인터페이스</h2>
+<p data-ke-size="size16">추상 클래스란 그 클래스 자체로는 인스턴스를 생성하지 못하고 자식 클래스로만</p>
+<p data-ke-size="size16">인스턴스를 생성할 수 있는 클래스다. 아래코드와 같이 작성하며 해당 클래스 앞에</p>
+<p data-ke-size="size16">sbstract를 붙인다.</p>
+<pre id="code_1680884049843" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>abstract public class Person { } //추상 클래스 Person
+public class Girl : Person { }   //추상 클래스의 자식 클래스 Girl
+
+// Person p1 = new Person();     //틀림: 추상 클래스는 인스턴스를 생성할 수 없다.
+Girl p2 = new Girl();            //맞음: 추상 클래스를 상속한 클래스로는 인스턴스를
+                                 //생성할 수 있다.</code></pre>
+<p data-ke-size="size16">인터페이스의 특징은 한 클래스에서 여러 개의 인터페이스를 상속할 수 있다는 것이다.</p>
+<pre id="code_1680884064819" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// 인터페이스는 여러 개를 상속할 수 있다.
+public class Girl : IPerson, IEnumerable, IList { &middot;&middot;&middot; }</code></pre>
+<h2 data-ke-size="size26">9.9 정리</h2>
+<p>[##_Image|kage@beRsXy/btr8JkKBt3K/V4uqC1mFoHndWLnKwB3crK/img.jpg|CDM|1.3|{"originWidth":1794,"originHeight":2161,"style":"alignCenter","filename":"20230407_043947.jpg"}_##][##_Image|kage@yFPut/btr8KHyr7XI/xhwklqMzoQf6ZZeWp7iss1/img.jpg|CDM|1.3|{"originWidth":1794,"originHeight":1569,"style":"alignCenter","filename":"20230407_044130.jpg"}_##]</p>
+<h1>10 C# 한 걸음 더</h1>
+<p data-ke-size="size16">이번 에는 C#의 기본적인 사항에 관해 조금 설명하겠다.</p>
+<h2 data-ke-size="size26">10.1 값 형식과 참조 형식</h2>
+<p data-ke-size="size16">C#의 형에는 값 형식(Value Type)과 참조 형식(Reference Type)이 있다.</p>
+<p data-ke-size="size16">값 형식에는 struct 기반인 char와 int가 있고,참조 형식에는Class 기반인</p>
+<p data-ke-size="size16">string과 배열이 있다. 자세한 내용은 아래 표를 참고</p>
+<pre id="code_1680884111995" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public struct XStruct { public int x; }  //값 형식 구조체
+public class XClass { public int x; }    //참조 형식 구조체</code></pre>
+<p data-ke-size="size16">구체적인 예를 통해 두 형식의 차이점을 살펴보겠다.</p>
+<p data-ke-size="size16">값 형식과 참조 형식을 각각 메서드의 인수로 넘겨주어 메서드 안에서 직접 값을 대입</p>
+<p data-ke-size="size16">하여 확인해보자. 값 형식은 값의 복사본을 전달하므로 변경 사항이 남지 않지만. 참조</p>
+<p data-ke-size="size16">형식은 값의 위치,즉 어느 곳을 참조해야 하는지를 복사 하므로 변경 사항이 남지 않지만.</p>
+<p data-ke-size="size16">참조 형식은 값의 위치,즉 어느 곳을 참조해야 하는지를 복사하므로 변경 사항이 남는다.</p>
+<pre id="code_1680884136155" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>void Test ()
+{
+  XStruct s = new XStruct();
+  XClass c = new XClass();
+  // 호출 전 상태.구조체 s의 x는 0, 클래스 cdml x는 0
+  XChange(s, c);
+  // 호출 후 상태. 구조체 s의 x는 0, 클래스 c의 x는 1
+}
+
+void XChange(XStruct s1, XClass c1) //구조체와 클래스를 인수로 넘겨주어 멤버의 값을 수정한다
+{
+   s1.x = 1;   //구조체의 멤버 x에 1을 대입
+   c1.x = 1;   //클래스의 멤버 x에 1을 대입
+}</code></pre>
+<p>[##_Image|kage@C68vA/btr8OW8ZQmO/Ar38kztZOU3Il3RosQvXL0/img.jpg|CDM|1.3|{"originWidth":1629,"originHeight":605,"style":"alignCenter","filename":"20230407_051031.jpg"}_##][##_Image|kage@bNT2TT/btr8JlJvQqb/ypYJHHlfGFw72PgLp4O1Kk/img.jpg|CDM|1.3|{"originWidth":1794,"originHeight":1564,"style":"alignCenter","filename":"20230407_051241.jpg"}_##]</p>
+<h2 data-ke-size="size26">11.1 네임스페이스</h2>
+<p data-ke-size="size16">네임스페이스(namespace)[이름 공간]란 마치 윈도에서 파일을 폴더로 분류하는 것과</p>
+<p data-ke-size="size16">비슷한 개념이다. 폴더가 다르면 그 안에 파일이나 폴더의 이름이 같아도 괜찮은 것처럼</p>
+<p data-ke-size="size16">C#에서도 네임스페이스가 다르면 같은 이름을 붙일 수 있다. 네임스페이스를 작성할 때는</p>
+<p data-ke-size="size16">namecspace 지시사에 이름을 붙여 {}(중괄호)를 묶으면 된다.줄괄호로 둘려싸인 부분이</p>
+<p data-ke-size="size16">네임스페이스의 이름이다.</p>
+<pre id="code_1680884166323" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>namespace Ootori
+{
+   //Ootori로 둘러싸인 부분이 전부 Ootori 네임스페이스다.
+   public class Kohaku.Korokke();
+}</code></pre>
+<p data-ke-size="size16">네임스페이스 이름 뒤에 클래스 이름을 입려하면 네임스페이스를 사용할 수 있다.</p>
+<pre id="code_1680884179922" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Ootori.Kohaku.Korokke();</code></pre>
+<p data-ke-size="size16">using 지시자를 사용하면 네임스페이스에 정의한 이름을 간편하게 다룰 수 있다.</p>
+<p data-ke-size="size16">코드 시작부분에 using을 선언함으로써 네임스페이스의 이름을 생략하고 사용할 수 있다.</p>
+<pre id="code_1680884195010" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>using Ootori;             //코드 시작 부분에 using으로 네임스페이스를 선언한다
+Kohaku.Korokke();         //사용할 때는 네임스페이스를 생략할 수 있다.
+Ootori.Kohaku.Korokke();  //using으로 선언했어도 using을 선언하지 않았을 때처럼 표현할 수 있다</code></pre>
+<h2 data-ke-size="size26">12.1 형변환</h2>
+<p data-ke-size="size16">형변환(cast)이란 어떤 형의 변수를 다른 형식으로 변환하는 것이다. 형은 한 번 선언</p>
+<p data-ke-size="size16">하면 나중에 다른 셯의 값을 대입할 수 없다. 그러나 대입해도 값이 변하지 않을 때와</p>
+<p data-ke-size="size16">형을 형 변환했을 때는 값을 대입할 수 있다. 형변환을 사용할 때는 변수 앞에 괄호로</p>
+<p data-ke-size="size16">대입하려는 형을 지정하면 된다.</p>
+<pre id="code_1680884214018" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int a = 123; double x;
+x = a;       //값이 변하지 않으므로 int형을 double형에 대입할 수 있다.(x = 123.0)
+a = (int)x;  //double형의 변수를 int로 형변환하면 대입할 수 있다.(a = 123)
+// a = x;    //int형 변수 a에 double형 값을 대입하면 컴파일 오류가 발생한다.</code></pre>
+<p data-ke-size="size16">클래스도 마찬가지다. 부모 클래스를 자식 클래스로 변환하려면 형변환을 해야 한다.</p>
+<pre id="code_1680884228099" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Person p1 = new Person();
+UnityChan p2 = new UnityChan();
+p1 = p2;            //자식 클래스의 참조를 부모 클래스에 대입하는 것은 괜찮다.
+// p2 = p1;         //부모 클래스의 참조르 자식 클래스에 대입하면 컴파일 오류가 난다.
+p2 = (UnityChan)p1  //부모 클래스의 참조를 형변환해서 자식 클래스에 대입하는 것은 괜찮다</code></pre>
+<p data-ke-size="size16">참조 형식은 as 연산자를 사용해서도 형변환을 할 수 있다.</p>
+<p data-ke-size="size16">이 두 방법의 차이는 형변환에 실패했을 때 드러난다.</p>
+<p data-ke-size="size16">as를 사용해서 형변환한 것은unll을 반환하고 괄호로 형변환한 것은</p>
+<p data-ke-size="size16">예외가 발생한다.</p>
+<pre id="code_1680884245050" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>if(p1 is UnityCham) {} //형변환할 수 있다면 처리를 실행한다.</code></pre>
+<h2 data-ke-size="size26">13.1 제네릭</h2>
+<p data-ke-size="size16">제네릭은 다양한 형을 지정해도 같은 처리르 실행하고 싶을 때 사용한다.</p>
+<p data-ke-size="size16">예를 들어 서로 값을 교체하는 Swap메서드를 마드는데 정수든지 소수든지 문자열이든지</p>
+<p data-ke-size="size16">똑같은 처리를 하고 싶다고 가정해보자.</p>
+<pre id="code_1680884261420" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public void Swap(ref int x, ref int y) { var t = x; y = x; x = t; }
+public void Swap(ref float x, ref float y) { var t = x; y = x; x = t; }
+public void Swap(ref string x, ref string y) { var t = x; y = x; x = t; }</code></pre>
+<p data-ke-size="size16">이럴 때는 아래코드와 같이 작성하면T가</p>
+<p data-ke-size="size16">적힌 부분에 어떤 형을 넣어도 똑같은 동작을 하게된다.</p>
+<pre id="code_1680884274773" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public void Swap&lt;T&gt;(ref T x, ref T y)
+{
+   var t = x; y = x; x = t;
+}</code></pre>
+<h2 data-ke-size="size26">14.1 컬렉션</h2>
+<p data-ke-size="size16">컬렉션은 한 마디로 오브젝트를 관리하는 방법이다. 컬렉션 중에는 제네릭으로 만들어진</p>
+<p data-ke-size="size16">것과 그렇지 않는 것이 있는데 제네릭으로 만들어지짖 않은 것을 사용할 때의 장점은</p>
+<p data-ke-size="size16">없으므로 반드시 제네릭 컬렉션을 사용하기 바란다. 자세한 내용은 아래 표에 나와있다.</p>
+<pre id="code_1680884292459" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// ArrayList list = new ArrayList();     //제네릭으로 만들어지지 않은 컬렉션은 사용하지 않는다.
+List&lt;string&gt; list = new List &lt;string&gt;(); //제네릭으로 만들어진 컬렉션을 사용한다.</code></pre>
+<p data-ke-size="size16">배열도 컬렉션의 일종이지만, 배열은 나중에 개수를 바꿀 수 없다는 것은 점이 다르다</p>
+<pre id="code_1680884304075" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var faces = new string[2];  // 배열은 처음에 정한 개수로 사용해야 한다
+faces[0] = "angry";
+faces[1] = "conf";
+// faces[2] = "smile";      // 배열의 요소 개수가 2이므로 3을 넣으면 예외가 발생한다.</code></pre>
+<p data-ke-size="size16">컬렉션 클래스인 List&lt;T&gt;를 사용하면 요소의 개수를 마음대로</p>
+<p data-ke-size="size16">추가할 수 있을 뿐만 아니라 항목도 자유롭게 추가할 수 있다.</p>
+<pre id="code_1680884319355" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var faces = new List&lt;string&gt;();  //컬렉션은 요소의 개수를 자유롭게 지정할 수 있다
+faces.Add("angry");
+faces.Add("conf");
+if(flag)                         //요소 역시 마음대로 추가할 수 있다.
+{
+   faces.Add("sap");
+}
+faces.Insert(2, "smile");        //코드가 진행되는 도중에도 추가할 수 있다.</code></pre>
+<p data-ke-size="size16">예를 들어 아래코드와 같이 작성하면 2개 추가했을 때(Add 했을 때)와 같은 의미다.</p>
+<pre id="code_1680884357810" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var faces = new List&lt;string&gt; { "angry". "conf" };</code></pre>
+<h2 data-ke-size="size26">15.1 foreach</h2>
+<p data-ke-size="size16">foreach는 배열이나 컬렉션의 모든 요소를 하나씩 읽어들이기 위한 키워드다.</p>
+<p data-ke-size="size16">아래코드와 같이 배열 이름과 변수 이름만으로 내용을 하나씩 넣는다.</p>
+<p data-ke-size="size16">하지만 foreach를 사용해서 항목을 추가하거나 제거하는 것은 좋지않다.</p>
+<pre id="code_1680884373034" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var faces = new [] { "angry", "sap", "smile" };
+foreach (string face in faces)  //배열 이름과 변수 이름만 지정한다.
+{
+   // faces[0] = 'aa';          //배열처럼 값을 수정할 수 없기 때문에 안전하다.
+   foreach (var x in faces) Console.WriteLine(x);
+}</code></pre>
+<h2 data-ke-size="size26">16.1 yield</h2>
+<p data-ke-size="size16">유니티에는 코루틴이라는 기능이 있다. 코루틴은yieId return으로 처리를 멈춘 다음</p>
+<p data-ke-size="size16">다시 시작 할 때 그 다음 줄부터 처리를 진행하는 것을 의미한다.</p>
+<p data-ke-size="size16">코루틴은 StartCoroutine()메서드로 구현하는 것이 편리하다. 아래코드 에서는</p>
+<p data-ke-size="size16">WaitForSeconds()로 지정한 시간만큼 기다른 후 다음 행이 처리된다.</p>
+<pre id="code_1680884404042" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>void Start()
+{
+   StartCoroutine("Coroutine");
+}
+
+IEnumerator Coroutine ()
+{
+   yieId return new WaitForSeconds(3);
+   yieId return new WaitForSeconds(3);
+   yieId return new WaitForSeconds(3);
+}</code></pre>
+<p data-ke-size="size16">코루틴은 유니티에만 있는 기능이지만,C#에서도 yieId를 사용한다.</p>
+<p data-ke-size="size16">예를 들어 foreach로 반복문을 돌리며 홀수를 반환하는 메서드라면</p>
+<p data-ke-size="size16">yieId를 사용해서 아래코드 처럼 구현 할 수 있다. foreach가 실행될 때</p>
+<p data-ke-size="size16">yieId return 값을 하나씩 반환한다.</p>
+<pre id="code_1680884418258" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public IEnumerable&lt;int&gt; GetOddNumber(int max)
+{
+   for (int i = 1; i &lt; max; i += 2) { yieeId return i; }
+}
+// 100까지 수 중에 홀수를 foreach 문으로 처리한다
+foreach (var odd in GetOddNumber(100)) { }</code></pre>
+<h2 data-ke-size="size26">17.1 위임</h2>
+<p data-ke-size="size16">위임(delegate)이란 대리자라고도 하며&rsquo;처리를 맡긴다&rsquo;라는 뜻으로 메서드의 참조를</p>
+<p data-ke-size="size16">나타내는 형이다. 메서드 선언 앞에 delegate를 붙여서 사용한다.</p>
+<pre id="code_1680884440594" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>delegate void Motion (float time) //인수의 형이 float이며 반환것이 없은 위임</code></pre>
+<p data-ke-size="size16">위임으로 선언된 메서드 이름을 형으로 해서 인수와 반환값이 같은 메서드의 참조를</p>
+<p data-ke-size="size16">대입한다. 이 변수는 변수가 참조하는 메서드를 몇번이고 호출할 수 있다.</p>
+<pre id="code_1680884456429" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>void Jump(float time) { } //Jump 메서드의 인수와 반환값은 다음 행에
+                          //지시자로 선언된 Motion의 것과 같다.
+Motion m = Jump;          //Jump 메서드의 참조를 위임형 변수 m에 대입한다.
+m(0.0f);                  //이렇게 호출하는 것은 Jump(0.0f);와 같다.</code></pre>
+<p data-ke-size="size16">위임은 차조를 여러 개 대입할 수 있다. 이를 구현하려면 +=로 추가하면 된다.</p>
+<p data-ke-size="size16">이처럼 여러 개의 참조를 대입한 위임을 호출하면 할단된 순서대로 각각이 참조하는</p>
+<p data-ke-size="size16">메서드 의 실체가 호출된다</p>
+<pre id="code_1680884469308" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Motion m = Jump;
+m += Wait;
+m(0.0f); // Jump(0.0f), Wait(0.0),</code></pre>
+<p data-ke-size="size16">C#에는 이미 정의된 위임형이 있으며 이를 사용하면 delegate를 선언하지 않아도 된다.</p>
+<p data-ke-size="size16">반환값이 없으면 Action을, 반환값이 있으면 Func를 사용한다.</p>
+<pre id="code_1680884484779" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>// 직접 위임을 선언하지 않아도 대입할 수 있다.
+Action&lt;float&gt; m = Jump;
+m(0.0f); // Jump(0.0f),</code></pre>
+<h2 data-ke-size="size26">18.1 람다 식</h2>
+<p data-ke-size="size16">람다 식(Lamda expression)은 이름을 붙이지 않아도 되는 메서드다.</p>
+<p data-ke-size="size16">람다 식은 이름 말고도 생략할 수 있는 요소가 많아 매우 간단하게 쓸 수 있다.</p>
+<p data-ke-size="size16">예를 들어 x를 제곱하는 메서드를 람다 식으로 작성하면 아래코드와 같다.</p>
+<pre id="code_1680884499610" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int Sqrt(int x) { return x * x; }   // 일반 메서드
+x =&gt; x* x                           // 람다 식</code></pre>
+<p data-ke-size="size16">람다 식을 쓸 때는 규칙이 있다. 우선 람다 연산사(&rArr;)가 필요하다.</p>
+<p data-ke-size="size16">그 다음은 아래코드를 순서대로 읽어보자</p>
+<pre id="code_1680884514898" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int Sqrt(int x) { return x * X; }   // 일반 메서드
+int Sqrt(int x) =&gt; { return x* X; } // 람다 식은 메서드 이름이 필요 없다
+int (int x) =&gt; { return x* X; }     // 좌변의 형은 추론되므로 형을 지정할 필요도 없다
+(x) =&gt; { return x* X; }             // 좌변에 인수가 하나면 괄호로 묶지 않아도 된다
+x =&gt; x* X                           // 좌변이 한 행이면 중괄호와 return;은 필요없다</code></pre>
+<p data-ke-size="size16">아래코드는 람다 식을 위임에 대입한 것이다.</p>
+<pre id="code_1680884530100" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>Func&lt;int, int&gt; mul = x =&gt; x * x;   // 람다 식 을 mul에 대입한다.
+mul(2);                            // mul(2)로 4가 된다.</code></pre>
+<h2 data-ke-size="size26">19.1 확장 메서드</h2>
+<p data-ke-size="size16">확장 메서드(extension method)는 유니티와 닷넷 프레임워크에서 제공하는</p>
+<p data-ke-size="size16">기존 클래스를 바꾸지 않고도 메서드를 추가할 수 있는 기능이다. 예를 들어</p>
+<p data-ke-size="size16">확장 메서드를 사용하면 아래코드처럼 자신이 지정한 문자열을 마치 처음부터 선언되어</p>
+<p data-ke-size="size16">있던 참조인 것처럼 호출할 수 있다.</p>
+<pre id="code_1680884545500" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int x = "UnityChan".GetMyLength();</code></pre>
+<p data-ke-size="size16">확장 메서드는 Static 클래스 안에 정적 메서드를 작성하고 첫 번째 인수에 this</p>
+<p data-ke-size="size16">와 형식을 지정한다</p>
+<pre id="code_1680884561090" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>public static class MyExtensions
+{
+   public static int GetMyLength(this string str) { return str.Length; }
+}</code></pre>
+<p data-ke-size="size16">정적 메서드로 선언하지만, 호출할 때는 인스턴스를 통해서 호출한다.</p>
+<pre id="code_1680884575531" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>int x = MyExtensions.GetMyLength("UnityChan");  // 보통 메서드 호출
+int x = "UnityChan".GetMyLength();              // 확장 메서드 호출</code></pre>
+<h2 data-ke-size="size26">20.1 LINQ</h2>
+<p data-ke-size="size16">LINQ는 다양한 데이터를 SQL 쿼리와 같이 손쉽게 가공하고 처리하는 기능이다.</p>
+<p data-ke-size="size16">예를 들어 배열에서 홀수만 가져올 때도 LINQ를 사용하면 단 한 줄로 처리할 수 있다.</p>
+<pre id="code_1680884591458" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var arry = new[] { 1, 2, 1, 5, 3, 6, 4 } ;          // 숫자 배열
+var k = from X in array where x % 2 == 1 select x;  // 홀수 취득 {1, 1, 5, 3 }</code></pre>
+<p data-ke-size="size16">LINQ를 작성하는 방법에는 두 가지가 있다.</p>
+<p data-ke-size="size16">하나는 위 두 번째코드와 같은 쿼리 구문이고,</p>
+<p data-ke-size="size16">다른 하나는 메서드 구분이다 둘 중 어느 것을 써도 차이는 없지만,</p>
+<p data-ke-size="size16">메서드 구문은 람다 식을 사용하므로 더 짧게 작성 할 수 있다.</p>
+<pre id="code_1680884605499" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var k = array.Where(x =&gt; x % 2 == 1); // 홀수만 가져옴 { 1, 1, 5, 3 }</code></pre>
+<p data-ke-size="size16">LIMQ를 사용하면 코드가 간결해져서 의도를 파악하기 쉽다, 또한, 필터링이나</p>
+<p data-ke-size="size16">정렬 처리를 얼마든지 추가할 수 있다. 예를 들어 아래 코드와 같이 방금 가져온</p>
+<p data-ke-size="size16">홀수 집합에서 중복된 값을 삭제한뒤 정렬한 요소를 가져올 수 있다.</p>
+<pre id="code_1680884619514" class="csharp" data-ke-language="csharp" data-ke-type="codeblock"><code>var k = array.Where(x =&gt; x % 2 == 1)  // 홀수만 가져옴 {1, 1, 5, 3}
+    .Distinct()                       // 중복된 값 삭제 {1, 5, 3}
+    .OrderBy(x =&gt; x);                 // 정렬 {1, 3, 5}</code></pre>
+<p data-ke-size="size16">LINQ 메서드에 관한 자세한 내용은 아래표를 참조하자</p>
+<table style="border-collapse: collapse; width: 87.7907%;" border="1" data-ke-align="alignLeft" data-ke-style="style13">
+<tbody>
+<tr>
+<td style="width: 13.6046%; text-align: center;"><span data-token-index="0">메서드 이름</span></td>
+<td style="width: 74.1861%; text-align: center;"><span data-token-index="0">설명</span></td>
+</tr>
+<tr>
+<td style="width: 13.6046%; text-align: left;">&nbsp;All</td>
+<td style="width: 74.1861%;">&nbsp;시퀀스의 모든 요소가 특정 조건을 충족하는지 판단한다.</td>
+</tr>
+<tr>
+<td style="width: 13.6046%; text-align: left;">&nbsp;Any</td>
+<td style="width: 74.1861%;">&nbsp;시퀀스에 특정 요소가 있는지 판단한다.</td>
+</tr>
+<tr>
+<td style="width: 13.6046%; text-align: left;">&nbsp;Average</td>
+<td style="width: 74.1861%;">&nbsp;시퀀스에 있는 값의 평균을 계산한다.</td>
+</tr>
+<tr>
+<td style="width: 13.6046%; text-align: left;">&nbsp;Cast</td>
+<td style="width: 74.1861%;">&nbsp;IEnumerable의 요소를 지정된 형으로 형변환한다.</td>
+</tr>
+<tr>
+<td style="width: 13.6046%; text-align: left;">&nbsp;Concat</td>
+<td style="width: 74.1861%;">&nbsp;두 시퀀스를 연결한다.</td>
+</tr>
+<tr>
+<td style="width: 13.6046%; text-align: left;">&nbsp;Count</td>
+<td style="width: 74.1861%;">&nbsp;시퀀스의 요소 개수를 반환한다.</td>
+</tr>
+</tbody>
+</table>
+<table style="border-collapse: collapse; width: 88.0233%; height: 360px;" border="1" data-ke-align="alignLeft" data-ke-style="style13">
+<tbody>
+<tr style="height: 20px;">
+<td style="width: 13.721%; height: 20px; text-align: center;"><span data-token-index="0">메서드 이름</span></td>
+<td style="width: 74.3023%; height: 20px; text-align: center;"><span data-token-index="0">설명</span></td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Distinct</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;지정된 비교자를 사용해서 중복되지 않는 요소를 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;ElementAt</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스에서 지정된 인덱스 위치에 있는 요소를 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Except</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;지정된 비교자를 사용해서 두 개의 시퀀스의 차집합을 생성다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;First</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀸스에서 첫 번재 요소를 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Last</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀸스에서 마지막 요소를 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Max</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스에서 최댓값을 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Min</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스에서 최솟값을 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;OrderBy</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;지정된 비교자를 사용해서 시퀀스의 요소를 오름차순으로 정렬한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Range</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;지정된 범위 안에서 정수 시퀀스를 생성한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Repeat</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;하나의 값이 반복되는시퀀스를 생성한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Reverse</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스에 있는 요소 순서를 반전시킨다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Select</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스의 각 요소를 새 품에 투영한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;SelectMany</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;Select가 중첩된 기능이다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Skip</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스에서 지정된 개수만큼 요소를 건너뛰고 나머지 요소만 다룬다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Sum</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스 값을 합계를 계산한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Take</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스 시작 위치에서 지정된 개수마늠 연속하는 요소를 반환한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;ToArray</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;IEnumerable&lt;T&gt;에서 배열을 생성한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;ToList</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;IEnumerable&lt;T&gt;로 List&lt;T&gt;를 생성한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Where</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;조건 서술부에 작성된 대로 시퀀스를 필터링한다.</td>
+</tr>
+<tr style="height: 17px;">
+<td style="width: 13.721%; height: 17px;">&nbsp;Single</td>
+<td style="width: 74.3023%; height: 17px;">&nbsp;시퀀스에서 지정된 조건에 맞는 유일한 요소를 반환한다. 두 개 이상일 때는 예외가 발생한다.</td>
+</tr>
+</tbody>
+</table>
+<h3 data-ke-size="size23"><b>21.1 정리</b></h3>
+<p>[##_Image|kage@ckDikd/btr8Li6flPT/yjU1QHD7GORsZ1diUsaX4k/img.jpg|CDM|1.3|{"originWidth":1794,"originHeight":1911,"style":"alignCenter","filename":"20230407_232113.jpg"}_##][##_Image|kage@coqNlz/btr8NCCSP1S/uX3C5K4o6cIK61Pd4642cK/img.jpg|CDM|1.3|{"originWidth":1794,"originHeight":2644,"style":"alignCenter","filename":"20230407_232341.jpg"}_##][##_Image|kage@bkQFpn/btr8J3V50zT/9SIwz1khH5QoEhsYRhfRfk/img.jpg|CDM|1.3|{"originWidth":1770,"originHeight":2262,"style":"alignCenter","filename":"20230407_233249.jpg"}_##]</p>
+<p data-ke-size="size16">&nbsp;</p>
